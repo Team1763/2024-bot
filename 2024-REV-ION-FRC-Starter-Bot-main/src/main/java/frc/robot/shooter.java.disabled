@@ -1,0 +1,34 @@
+package frc.robot;
+
+public class shooter {
+
+}
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Timer;
+
+public class Robot {
+    private Joystick joystick;
+    private Talon shooterMotor;
+    private Talon feederMotor;
+
+    public Robot() {
+        joystick = new Joystick(0); // Assuming joystick is connected to port 0
+        shooterMotor = new Talon(0); // Assuming shooter motor is connected to PWM port 0
+        feederMotor = new Talon(1); // Assuming feeder motor is connected to PWM port 1
+    }
+
+    public void teleopPeriodic() {
+        double shooterSpeed = joystick.getRawAxis(1); // Assuming axis 1 controls shooter speed
+        double feederSpeed = joystick.getRawAxis(2); // Assuming axis 2 controls feeder speed
+
+        // Set shooter motor speed
+        shooterMotor.set(shooterSpeed);
+
+        // Set feeder motor speed
+        feederMotor.set(feederSpeed);
+
+        // Wait for a short time to avoid excessive loop execution
+        Timer.delay(0.02);
+    }
+}

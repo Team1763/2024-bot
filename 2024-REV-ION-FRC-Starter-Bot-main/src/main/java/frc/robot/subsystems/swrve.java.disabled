@@ -1,0 +1,42 @@
+package frc.robot.subsystems;
+
+public class  {roboT}
+    // Define a variable to track elapsed time
+private double autonomousStartTime;
+
+@Override
+public void autonomousInit() {
+    m_autoSelected = m_chooser.getSelected();
+    System.out.println("Auto selected: " + m_autoSelected);
+    
+    // Record the start time when autonomous period begins
+    autonomousStartTime = Timer.getFPGATimestamp();
+}
+
+/** This function is called periodically during autonomous. */
+@Override
+public void autonomousPeriodic() {
+    // Calculate elapsed time since autonomous started
+    double elapsedTime = Timer.getFPGATimestamp() - autonomousStartTime;
+    
+    switch (m_autoSelected) {
+        case kCustomAuto:
+            // Put custom auto code here
+            break;
+        case kDefaultAuto:
+        default:
+            // Drive forward for 45 seconds
+            // If 45 seconds have passed, stop driving and shoot
+            if (elapsedTime < 45.0) {
+                // For example, if you have a drivetrain object named "drivetrain":
+                // drivetrain.driveForward(distance);
+            } else {
+                // For example, if you have a shooter object named "shooter":
+                // shooter.shoot();
+            }
+            break;
+    }
+}
+
+
+}
